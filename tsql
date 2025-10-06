@@ -1,0 +1,35 @@
+DECLARE @sayi int = 15;
+
+if @sayi > 10
+	print 'sayi 10 dan büyüktür'
+else if @sayi <10
+	print 'sayi 10 dan kücüktür'
+else
+	print 'sayinin değeri =' + @sayi
+	
+declare @sayi1 int=30;
+declare @sayi2 int=40;
+declare @sayi3 int=50;
+
+if @sayi1>@sayi2 and @sayi1 > @sayi3	
+	print cast(replace(@sayi1,'sayi1 en büyük', '')as int );
+else if @sayi2>@sayi1 and @sayi2 > @sayi3	
+	print cast(replace(@sayi2,'sayi2 en büyük', '')as int );
+if @sayi3>@sayi2 and @sayi3 > @sayi1	
+	print cast(replace(@sayi3,'sayi3 en büyük', '')as int );
+
+declare @sayi1 int=80;
+declare @sayi2 int=40;
+declare @sayi3 int=50;
+declare @enbuyuksayi int;
+
+set @enbuyuksayi = @sayi1
+
+if @sayi2>@enbuyuksayi
+	print cast(replace(@sayi2,'sayi2 en büyük', '')as int );
+else if @sayi3>@enbuyuksayi
+	print cast(replace(@sayi3,'sayi3 en büyük', '')as int );
+else
+	print cast(replace(@sayi1,'sayi1 en büyük', '')as int );
+
+	
