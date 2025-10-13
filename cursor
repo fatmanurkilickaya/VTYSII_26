@@ -1,0 +1,98 @@
+
+DECLARE @NAME NVARCHAR(100);
+
+	DECLARE CRS CURSOR
+	FOR SELECT URUNADI FROM URUNLER
+	OPEN CRS
+	FETCH NEXT FROM CRS INTO @NAME
+	WHILE @@FETCH_STATUS = 0 
+	BEGIN
+		PRINT @NAME
+		FETCH NEXT FROM CRS INTO @NAME
+	END
+	CLOSE CRS
+	DEALLOCATE CRS
+
+
+
+
+
+// örnek kullanım
+
+CREATE DATABASE OKUL;
+use OKUL
+CREATE TABLE OGRENCILER(
+ogrNo int identity(1,1) primary key,
+ogrAdi nvarchar(50),
+ogrSoyadi nvarchar(50)
+);
+insert into OGRENCILER values ('Kübra','Sarıbaş');
+insert into OGRENCILER values ('Beyza','Yalçın');
+insert into OGRENCILER values ('Fatma Nur','Kılıçkaya');
+insert into OGRENCILER values ('Kübra','Sarıbaş');
+insert into OGRENCILER values ('Beyza','Yalçın');
+insert into OGRENCILER values ('Fatma Nur','Kılıçkaya');
+insert into OGRENCILER values ('Kübra','Sarıbaş');
+insert into OGRENCILER values ('Beyza','Yalçın');
+insert into OGRENCILER values ('Fatma Nur','Kılıçkaya');
+select * from OGRENCILER
+
+USE OKUL
+DECLARE @ogrNo int, @ogrAdi nvarchar(100), @ogrSoyadi nvarchar(100)
+	
+	DECLARE CRS CURSOR
+	FOR SELECT ogrNo, ogrAdi, ogrSoyadi FROM OGRENCILER
+	OPEN CRS
+	FETCH NEXT FROM CRS INTO @ogrNo, @ogrAdi, @ogrSoyadi
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		SELECT @ogrAdi = ogrAdi , @ogrSoyadi =ogrSoyadi 
+		FROM OGRENCILER
+		WHERE @ogrNo = ogrNo
+		IF @ogrNo %2 = 0
+			BEGIN
+			SET @ogrAdi = (@ogrAdi + '--' + @ogrSoyadi)
+			PRINT @ogrAdi
+			END
+		ELSE
+			BEGIN
+			SET @ogrAdi = (@ogrAdi + '-' + @ogrSoyadi)
+			PRINT @ogrAdi
+			END
+	
+		FETCH NEXT FROM CRS INTO @ogrNo, @ogrAdi, @ogrSoyadi
+		
+	END
+	CLOSE CRS
+	DEALLOCATE CRS
+
+
+
+
+DECLARE @ogrNo int, @ogrAdi nvarchar(100), @ogrSoyadi nvarchar(100)
+	
+	DECLARE CRS CURSOR
+	FOR SELECT ogrNo, ogrAdi, ogrSoyadi FROM OGRENCILER
+	OPEN CRS
+	FETCH NEXT FROM CRS INTO @ogrNo, @ogrAdi, @ogrSoyadi
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		SELECT @ogrAdi = ogrAdi , @ogrSoyadi =ogrSoyadi 
+		FROM OGRENCILER
+		WHERE @ogrNo = ogrNo
+		IF @ogrNo %2 = 0
+			BEGIN
+			SET @ogrAdi = (@ogrAdi + '--' + @ogrSoyadi)
+			PRINT @ogrAdi
+			END
+		ELSE
+			BEGIN
+			SET @ogrAdi = (@ogrAdi + '-' + @ogrSoyadi)
+			PRINT @ogrAdi
+			END
+	
+		FETCH NEXT FROM CRS INTO @ogrNo, @ogrAdi, @ogrSoyadi
+		
+	END
+	CLOSE CRS
+	DEALLOCATE CRS
