@@ -1,0 +1,121 @@
+create database customers
+use customers
+create table musteriler(
+ID int primary key not null identity(2,2),
+NAMESURNAME	nvarchar(74),
+TCNUMBER int,
+GENDER	nchar(2),
+EMAIL	nvarchar(74),
+BIRTHDATE	nvarchar(74),
+CITYID int  foreign key (CITYID) references cities(id),
+DISTRICTID int  foreign key (DISTRICTID) references districties(id),
+TELNR1	nvarchar(74),
+TELNR2 nvarchar(74)
+
+);
+
+create table cities(
+id int primary key identity(1,1) NOT NULL,
+cityName nvarchar(100)
+)
+ 
+create table districties(
+id int primary key identity(1,1) NOT NULL,
+cityid int foreign key (id) references cities (id),
+districtName nvarchar(100)
+);
+
+
+select * from cities
+insert into cities values ('Kayseri')
+delete from cities where id = 1
+
+
+ insert into cities values ('ADANA');
+ insert into cities values ('ADIYAMAN');
+ insert into cities values ('AFYONKARAHİSAR');
+ insert into cities values ('AĞRI');
+ insert into cities values ('AMASYA');
+ insert into cities values ('ANKARA');
+ insert into cities values ('ANTALYA');
+ insert into cities values ('ARTVİN');
+ insert into cities values ('AYDIN');
+ insert into cities values ('BALIKESİR');
+ insert into cities values ('BİLECİK');
+ insert into cities values ('BİNGÖL');
+ insert into cities values ('BİTLİS');
+ insert into cities values ('BOLU');
+ insert into cities values ('BURDUR');
+ insert into cities values ('BURSA');
+ insert into cities values ('ÇANAKKALE');
+ insert into cities values ('ÇANKIRI');
+ insert into cities values ('ÇORUM');
+ insert into cities values ('DENİZLİ');
+ insert into cities values ('DİYARBAKIR');
+ insert into cities values ('EDİRNE');
+ insert into cities values ('ELAZIĞ');
+ insert into cities values ('ERZİNCAN');
+ insert into cities values ('ERZURUM');
+ insert into cities values ('ESKİŞEHİR');
+ insert into cities values ('GAZİANTEP');
+ insert into cities values ('GİRESUN');
+ insert into cities values ('GÜMÜŞHANE');
+ insert into cities values ('HAKKARİ');
+ insert into cities values ('HATAY');
+ insert into cities values ('ISPARTA');
+ insert into cities values ('MERSİN');
+ insert into cities values ('İSTANBUL');
+ insert into cities values ('İZMİR');
+ insert into cities values ('KARS');
+ insert into cities values ('KASTAMONU');
+ insert into cities values ('KAYSERİ');
+ insert into cities values ('KIRKLARELİ');
+ insert into cities values ('KIRŞEHİR');
+ insert into cities values ('KOCAELİ');
+ insert into cities values ('KONYA');
+ insert into cities values ('KÜTAHYA');
+ insert into cities values ('MALATYA');
+ insert into cities values ('MANİSA');
+ insert into cities values ('KAHRAMANMARAŞ');
+ insert into cities values ('MARDİN');
+ insert into cities values ('MUĞLA');
+ insert into cities values ('MUŞ');
+ insert into cities values ('NEVŞEHİR');
+ insert into cities values ('NİĞDE');
+ insert into cities values ('ORDU');
+ insert into cities values ('RİZE');
+ insert into cities values ('SAKARYA');
+ insert into cities values ('SAMSUN');
+ insert into cities values ('SİİRT');
+ insert into cities values ('SİNOP');
+ insert into cities values ('SİVAS');
+ insert into cities values ('TEKİRDAĞ');
+ insert into cities values ('TOKAT');
+ insert into cities values ('TRABZON');
+ insert into cities values ('TUNCELİ');
+ insert into cities values ('ŞANLIURFA');
+ insert into cities values ('UŞAK');
+ insert into cities values ('VAN');
+ insert into cities values ('YOZGAT');
+ insert into cities values ('ZONGULDAK');
+ insert into cities values ('AKSARAY');
+ insert into cities values ('BAYBURT');
+ insert into cities values ('KARAMAN');
+ insert into cities values ('KIRIKKALE');
+ insert into cities values ('BATMAN');
+ insert into cities values ('ŞIRNAK');
+ insert into cities values ('BARTIN');
+ insert into cities values ('ARDAHAN');
+ insert into cities values ('IĞDIR');
+ insert into cities values ('YALOVA');
+ insert into cities values ('KARABÜK');
+ insert into cities values ('KİLİS');
+ insert into cities values ('OSMANİYE');
+ insert into cities values ('DÜZCE');
+
+
+ SELECT * FROM musteriler AS M
+ INNER join cities c on c.id = m.CITYID
+ INNER JOIN districties d on d.id = m.DISTRICTID
+ where (c.cityName = 'Kayseri' and d.districtName = 'Talas') or m.GENDER = 'K'
+
