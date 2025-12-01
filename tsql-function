@@ -1,0 +1,49 @@
+--örnek
+CREATE FUNCTION FK_IKISAYI_TOPLA(@a int, @b int)
+RETURNS int
+as
+begin
+declare @degisken int
+	set @degisken = @a + @b
+	return @degisken
+end
+
+select dbo.FK_IKISAYI_TOPLA(3,5)
+
+--örnek
+CREATE FUNCTION FK_IKISAYI_TOPLA(@a int, @b int)
+RETURNS int
+as
+begin
+declare @degisken int
+	if(@a>@b)
+		set @degisken=@a+@b
+	else
+		set @degisken=@a*@b
+	return @degisken
+end
+
+select dbo.FK_IKISAYI_TOPLA(3,5)
+
+--örnek
+
+CREATE FUNCTION FK_ASALSAYI(@SAYI int)
+RETURNS NVARCHAR(100)
+AS
+BEGIN
+DECLARE @RAKAM INT =1, @SAYAC INT =0,@SONUC NVARCHAR(100)
+	WHILE (@SAYI >= @RAKAM)
+	BEGIN
+		IF(@SAYI % @RAKAM = 0)
+			SET @SAYAC += 1 -- @SAYAC = @SAYAC +1
+		SET @RAKAM +=1
+	END
+	SET @SONUC = CONVERT(VARCHAR, @SAYI)
+	IF(@SAYAC > 2)
+		SET @SONUC = @SONUC + '-Asal Değildir'
+	ELSE
+		SET @SONUC = @SONUC + '-Asal'
+	RETURN @SONUC
+END
+
+SELECT dbo.FK_ASALSAYI(18)
