@@ -1,0 +1,41 @@
+create database personel		
+create table customers(
+CUSTOMER_ID int primary key identity(1,1) ,
+NAME_ varchar(50) not null,
+SURNAME	varchar(50) not null,
+BIRTHDATE	varchar(50) not null,
+GENDER	char(2),
+CITYID	int,
+DISTRICTID int
+)
+
+create table CITIES (
+CITY_ID	int primary key identity (1,1),
+CITY nvarchar(50)
+);
+
+create table DISTRICTS (
+DISTRICT_ID	int primary key identity (1,1),
+DISTRICT nvarchar (50)
+
+);
+
+ALTER TABLE CITIES ADD DISTRICT_ID int ;
+
+alter table CITIES add constraint DISTRICT_ID 
+foreign key (DISTRICT_ID) REFERENCES DISTRICTS(DISTRICT_ID)
+
+
+
+alter table customers add constraint DISTRICTID 
+foreign key (DISTRICTID) REFERENCES DISTRICTS(DISTRICT_ID)
+
+
+alter table customers add constraint CITYID 
+foreign key (CITYID) REFERENCES CITIES(CITY_ID)
+
+SELECT * FROM customers AS CU
+INNER JOIN CITIES AS CI ON CI.CITY_ID = CU.CITYID
+
+
+
