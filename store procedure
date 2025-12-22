@@ -1,0 +1,15 @@
+store procedurelerin faydaları
+
+1- execute plan çıkarıldığı için daha hızlı çalışırlar
+2-client server mimarisinin aksine toplu işlemler kendi içerisinde
+çalıştığı için network hızında değil ram hızında çalışırlar.
+3-bütün işlemler memory hızında gerçekleştirir.
+4-yazılım güncellemeden değişiklikler yapılabilir.
+5-güvenilirdir, SQL injection saldırılarına kesin çözümdür.
+6- güvenilirdir, kritik raporlar için store procedure bazında
+yetki verilebilir.
+7-Herhangi bir programlama dilinde yazılabilecek hemen hemen
+her türlü komut burada yazılıp çalıştırılabilir.
+8- stored procedureler birbiri içerisinde çağırılabilir.
+9-Performansları ölçülebilir. Kaç kez çalıştırılmış en
+son ne zaman çalıştırılmış gibi bilgiler görülebilir.
